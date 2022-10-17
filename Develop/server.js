@@ -16,14 +16,19 @@ app.get("/notes", (req, res) => {
 });
 
 app.get("/api/notes", (req, res) => {
-    res.json("Get request received");
-
+    fs.readFile("./db/db.json", (err, data) =>{
+        err ? res.json("Error retrieving data") : res.json(JSON.parse(data));
+    });
 });
 
 app.post("/api/notes", (req, res) => {
     res.json("Post request received");
 });
 
+app.delete("/api/notes/:id", (req, res)=>{
+    console.log(req.params.id);
+});
+
 app.listen(PORT, ()=>{
     console.log(`Started server on http://localhost:${PORT}`);
-})
+});
