@@ -4,7 +4,7 @@ const path = require("path");
 const fs = require("fs");
 const uuid = require("uuid4");
 
-const PORT = 3001; // Define the port to be used
+const PORT = process.env.PORT || 3001; // Define the port to be used
 
 // Create the express application
 const app = express();
